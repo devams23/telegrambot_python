@@ -12,8 +12,8 @@ from telegram.ext import Application, CommandHandler, MessageHandler, filters, C
             1) TYPE COMMAND '/setcommands' , and fill in the details as instructed .
             2) Take care while writing  commands , it should match with the one in the script.
 '''
-TOKEN: Final = ""
-BOT_USERNAME: Final = "@amonkeykeykey_bot"
+TOKEN: Final = "YOUR_TOKEN"
+BOT_USERNAME: Final = "YOUR_BOT_USERNAME"
 
 
 # Bot Commands
