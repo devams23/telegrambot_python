@@ -1,5 +1,8 @@
 from telegram import Update
 from typing import Final
+from APi.geminires import handle_response
+from dotenv import load_dotenv
+import os
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
 '''
             FOLLOW THE STEPS BELOW TO GET YOUR TOKEN FOR FREE!
@@ -12,8 +15,11 @@ from telegram.ext import Application, CommandHandler, MessageHandler, filters, C
             1) TYPE COMMAND '/setcommands' , and fill in the details as instructed .
             2) Take care while writing  commands , it should match with the one in the script.
 '''
-TOKEN: Final = "YOUR_TOKEN"
-BOT_USERNAME: Final = "YOUR_BOT_USERNAME"
+
+load_dotenv()
+
+TOKEN: Final = os.getenv("BOT_TOKEN")
+BOT_USERNAME: Final = os.getenv("BOT_USERNAME")
 
 
 # Bot Commands
@@ -31,18 +37,6 @@ async def custom_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # message Responses
 
 
-def handle_response(text: str):
-    usertext = text.lower()
-    if 'hello' in usertext:
-        return 'Hey , There !'
-
-    elif 'how are you' in usertext:
-        return 'Im fine !'
-
-    elif 'life' in usertext:
-        return 'this is life  !'
-
-    return 'I can understand that !'
 
 
 # Handle Message
@@ -70,7 +64,6 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(response)
 
 # errors
-
 
 async def error(update: Update, context: ContextTypes.DEFAULT_TYPE):
     print(f'Update {update} cause an error {context.error}')
